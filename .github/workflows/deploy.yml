@@ -1,5 +1,6 @@
 name: Deploy to GitHub Pages
 
+# Final fix for white screen issue - BrowserRouter with proper 404 handling
 on:
   push:
     branches: [ main ]
@@ -32,6 +33,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: List build output
+        run: ls -la dist/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

@@ -2,13 +2,13 @@
 // Main entry point with routing setup
 
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ExperimentList from './ExperimentList';
 import ExperimentDetails from './ExperimentDetails';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/iot-expts">
       <Routes>
         <Route path="/" element={<ExperimentList />} />
         <Route path="/experiment/:id" element={<ExperimentDetails />} />
