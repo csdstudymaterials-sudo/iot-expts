@@ -7,6 +7,16 @@ import { motion } from 'framer-motion';
 import experiments from './data';
 import { downloadExperiment, downloadCode } from './utils/downloadUtils';
 
+// Import images
+import esp32PinConfig from './assets/esp32 pin config.jpg';
+import raspberryPi4 from './assets/raspberry-pi-4.png';
+
+// Create image mapping
+const imageMap = {
+  'esp32 pin config.jpg': esp32PinConfig,
+  'raspberry-pi-4.png': raspberryPi4,
+};
+
 const ExperimentDetails = () => {
   // Get the experiment ID from URL params
   const { id } = useParams();
