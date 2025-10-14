@@ -1,6 +1,6 @@
 name: Deploy to GitHub Pages
 
-# Final fix for white screen issue - BrowserRouter with proper 404 handling
+# Deploy built files to docs folder for GitHub Pages
 on:
   push:
     branches: [ main ]
@@ -37,16 +37,16 @@ jobs:
           CACHE_BUST: ${{ github.run_number }}
           VITE_BUILD_TIME: ${{ github.run_number }}
 
-      - name: List build output
-        run: ls -la dist/
+      - name: Deploy to docs folder
+        run: |
+          rm -rf docs
+          mv dist docs
+          ls -la docs/
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './docs'
 
   deploy:
     environment:
