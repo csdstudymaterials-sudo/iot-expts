@@ -5,6 +5,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import experiments from './data';
+import { downloadExperiment } from './utils/downloadUtils';
 import kecbanner from './assets/kecbanner.png';
 
 const ExperimentList = () => {
@@ -62,16 +63,31 @@ const ExperimentList = () => {
               transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
+              className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-6"
             >
-              <Link
-                to={`/experiment/${experiment.id}`}
-                className="block bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20 backdrop-blur-sm"
-              >
-                <div className="text-center">
-                  <h4 className="text-lg md:text-xl font-bold mb-2">Experiment {experiment.id}</h4>
-                  <p className="text-sm md:text-base opacity-90 leading-tight">{experiment.name}</p>
-                </div>
-              </Link>
+              <div className="text-center mb-4">
+                <h4 className="text-lg md:text-xl font-bold text-blue-700 mb-2">Experiment {experiment.id}</h4>
+                <p className="text-sm md:text-base text-gray-700 leading-tight">{experiment.name}</p>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <Link
+                  to={`/experiment/${experiment.id}`}
+                  className="block bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-center font-medium"
+                >
+                  View Details
+                </Link>
+
+                <button
+                  onClick={() => downloadExperiment(experiment)}
+                  className="inline-flex bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 items-center justify-center gap-2 font-medium"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download (.txt)
+                </button>
+              </div>
             </motion.div>
           ))}
         </motion.div>
