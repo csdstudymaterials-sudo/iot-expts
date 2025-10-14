@@ -6,18 +6,29 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Kongu IoT Laboratory Experiments</title>
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Kongu IoT Laboratory Experiments - v1.0.0</title>
+    <link rel="icon" type="image/svg+xml" href="./vite.svg?v=1.0.0" />
   </head>
   <body>
     <div id="root">
-      <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif;">
+      <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
         <div style="text-align: center;">
-          <h1>Kongu IoT Laboratory</h1>
-          <p>Loading...</p>
+          <h1>🚀 Kongu IoT Laboratory</h1>
+          <p>Loading experiments...</p>
+          <div style="margin: 20px 0;">
+            <div style="width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+          </div>
+          <p style="font-size: 14px; opacity: 0.8;">If this takes too long, try refreshing the page</p>
         </div>
       </div>
+      <style>
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      </style>
     </div>
-    <script type="module" src="./src/main.jsx"></script>
+    <script type="module" src="./src/main.jsx?v=1.0.0"></script>
   </body>
 </html>

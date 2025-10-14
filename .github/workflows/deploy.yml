@@ -35,6 +35,7 @@ jobs:
         run: npm run build
         env:
           CACHE_BUST: ${{ github.run_number }}
+          VITE_BUILD_TIME: ${{ github.run_number }}
 
       - name: List build output
         run: ls -la dist/
