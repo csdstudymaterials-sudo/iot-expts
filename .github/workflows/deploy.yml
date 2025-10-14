@@ -5,6 +5,8 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Force redeployment after fixing asset paths
+
 permissions:
   contents: read
   pages: write
