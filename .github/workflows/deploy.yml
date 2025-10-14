@@ -37,11 +37,8 @@ jobs:
           CACHE_BUST: ${{ github.run_number }}
           VITE_BUILD_TIME: ${{ github.run_number }}
 
-      - name: Deploy to docs folder
-        run: |
-          rm -rf docs
-          mv dist docs
-          ls -la docs/
+      - name: List build output
+        run: ls -la docs/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
