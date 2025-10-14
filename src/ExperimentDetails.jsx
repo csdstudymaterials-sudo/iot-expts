@@ -6,10 +6,51 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import experiments from './data';
 
+// Import images
+import esp32PinConfig from './assets/esp32 pin config.jpg';
+import raspberryPi4 from './assets/raspberry-pi-4.png';
+
+// Create image mapping
+const imageMap = {
+  'esp32 pin config.jpg': esp32PinConfig,
+  'raspberry-pi-4.png': raspberryPi4,
+};
+
 const ExperimentDetails = () => {
   // Get the experiment ID from URL params
   const { id } = useParams();
   const experiment = experiments.find(exp => exp.id === parseInt(id));
+
+  // Function to download code as a file
+  const downloadCode = (code, title) => {
+    // Determine file extension based on code type
+    let extension = '.ino';
+    let mimeType = 'text/plain';
+    // If the code looks like HTML, use .html
+    if (code.trim().startsWith('<!DOCTYPE html>')) {
+      extension = '.html';
+      mimeType = 'text/html';
+    } else if (title.toLowerCase().includes('python') || code.includes('import ') || code.includes('def ')) {
+      extension = '.py';
+      mimeType = 'text/x-python';
+    }
+    // Create a blob with the code content
+    const blob = new Blob([code], { type: mimeType });
+    // Create a temporary URL for the blob
+    const url = window.URL.createObjectURL(blob);
+    // Create a temporary anchor element
+    const a = document.createElement('a');
+    a.href = url;
+    // Generate filename from title (remove special characters and add correct extension)
+    const filename = title.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_') + extension;
+    a.download = filename;
+    // Trigger the download
+    document.body.appendChild(a);
+    a.click();
+    // Clean up
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  };
 
   if (!experiment) {
     return (
@@ -112,7 +153,7 @@ const ExperimentDetails = () => {
                       className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 p-4"
                     >
                       <img
-                        src={`/src/assets/${image}`}
+                        src={imageMap[image] || `/src/assets/${image}`}
                         alt={`${experiment.name} - Reference ${index + 1}`}
                         className="w-full h-auto rounded-xl shadow-lg"
                         onError={(e) => {
@@ -166,7 +207,18 @@ const ExperimentDetails = () => {
                     transition={{ delay: 1.4 + index * 0.2, duration: 0.6 }}
                     className="mb-6"
                   >
-                    <h5 className="text-lg md:text-xl font-semibold text-blue-600 mb-2">{prog.title}</h5>
+                    <div className="flex justify-between items-center mb-2">
+                      <h5 className="text-lg md:text-xl font-semibold text-blue-600">{prog.title}</h5>
+                      <button
+                        onClick={() => downloadCode(prog.code, prog.title)}
+                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center gap-2"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Download
+                      </button>
+                    </div>
                     <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
                       <code>{prog.code}</code>
                     </pre>
