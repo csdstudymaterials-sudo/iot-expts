@@ -52,6 +52,75 @@ const ExperimentDetails = () => {
     window.URL.revokeObjectURL(url);
   };
 
+  // Function to download entire experiment as text file
+  const downloadExperiment = () => {
+    let content = '';
+
+    // Add experiment header
+    content += 'KONGU ENGINEERING COLLEGE\n';
+    content += 'DEPARTMENT OF COMPUTER SCIENCE AND DESIGN\n';
+    content += 'IoT LABORATORY EXPERIMENT\n\n';
+
+    // Add experiment details
+    content += `EXPERIMENT ${experiment.id}: ${experiment.name}\n\n`;
+
+    // Add aim
+    content += `AIM:\n${experiment.aim}\n\n`;
+
+    // Add components
+    content += `COMPONENTS USED:\n`;
+    experiment.components.forEach((component, index) => {
+      content += `${index + 1}. ${component}\n`;
+    });
+    content += '\n';
+
+    // Add procedure
+    if (experiment.procedure && experiment.procedure.length > 0) {
+      content += `PROCEDURE:\n`;
+      experiment.procedure.forEach((step, index) => {
+        content += `${index + 1}. ${step}\n`;
+      });
+      content += '\n';
+    }
+
+    // Add programs
+    if (experiment.program && experiment.program.length > 0) {
+      content += `PROGRAMS:\n`;
+      experiment.program.forEach((prog, index) => {
+        content += `${index + 1}. ${prog.title}\n`;
+        content += `${'='.repeat(prog.title.length + 3)}\n`;
+        content += `${prog.code}\n\n`;
+      });
+    }
+
+    // Add output
+    if (experiment.output) {
+      content += `OUTPUT:\n${experiment.output}\n\n`;
+    }
+
+    // Add footer
+    content += 'Developed by 2023-27 batch\n';
+    content += 'Kongu Engineering College IoT Laboratory\n';
+
+    // Create blob and download
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+
+    // Generate filename from experiment name
+    const filename = `Experiment_${experiment.id}_${experiment.name.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_').substring(0, 50)}.txt`;
+    a.download = filename;
+
+    // Trigger download
+    document.body.appendChild(a);
+    a.click();
+
+    // Clean up
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  };
+
   if (!experiment) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex items-center justify-center p-4">
@@ -246,8 +315,17 @@ const ExperimentDetails = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.2, duration: 0.6 }}
-            className="mt-8 text-center"
+            className="mt-8 text-center space-y-4"
           >
+            <button
+              onClick={downloadExperiment}
+              className="inline-flex bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 mr-4 items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Experiment (.txt)
+            </button>
             <Link
               to="/"
               className="inline-block bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
