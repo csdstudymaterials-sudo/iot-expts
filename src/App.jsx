@@ -8,7 +8,7 @@ import ExperimentDetails from './ExperimentDetails';
 
 function App() {
   return (
-    <Router basename="/iot-expts">
+    <Router basename="/iot-expts/docs">
       <Routes>
         <Route path="/" element={<ExperimentList />} />
         <Route path="/experiment/:id" element={<ExperimentDetails />} />

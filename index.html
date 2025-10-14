@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=./docs/index.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="./docs/vite.svg" />
     <title>Redirecting to Kongu IoT Lab...</title>
@@ -35,15 +34,21 @@
         }
     </style>
     <script>
-        // Immediate redirect
-        window.location.replace('./docs/index.html');
+        // Redirect to docs folder but keep clean URL
+        var path = window.location.pathname;
+        var repoName = '/iot-expts';
+        
+        // If we're at the root, redirect to docs
+        if (path === repoName + '/' || path === repoName + '/index.html' || path === repoName) {
+            window.location.replace(repoName + '/docs/');
+        }
     </script>
 </head>
 <body>
     <div class="container">
         <h1>🚀 Redirecting to Kongu IoT Laboratory</h1>
         <div class="spinner"></div>
-        <p>If you're not redirected, <a href="./docs/index.html" style="color: #fff; text-decoration: underline;">click here</a></p>
+        <p>If you're not redirected, <a href="./docs/" style="color: #fff; text-decoration: underline;">click here</a></p>
     </div>
 </body>
 </html>
