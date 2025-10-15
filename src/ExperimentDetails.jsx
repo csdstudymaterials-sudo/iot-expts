@@ -31,12 +31,12 @@ const ExperimentDetails = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex items-center justify-center p-4">
         <div className="text-center p-8 bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20">
           <h2 className="text-2xl font-bold text-red-600 mb-4">Experiment not found</h2>
-          <Link
-            to="/"
+          <button
+            onClick={() => window.location.href = './'}
             className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl"
           >
-            Back to Experiments
-          </Link>
+            Back to Authentication
+          </button>
         </div>
       </div>
     );
@@ -149,12 +149,12 @@ const ExperimentDetails = () => {
               </svg>
               Download Experiment (.txt)
             </button>
-            <Link
-              to="/"
+            <button
+              onClick={() => window.location.href = './'}
               className="inline-block bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-4 rounded-2xl shadow-lg"
             >
-              Back to Experiments
-            </Link>
+              Back to Authentication
+            </button>
           </div>
         </div>
 
