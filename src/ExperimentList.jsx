@@ -24,7 +24,19 @@ const ExperimentList = () => {
 
         {/* Section Header */}
         <div className="text-center p-6 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-white/30 mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-blue-700">IoT Laboratory Experiments</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-blue-700 mb-4">IoT Laboratory Experiments</h3>
+          <button
+            onClick={() => {
+              // Clear authentication state
+              localStorage.removeItem('kec_authenticated');
+              localStorage.removeItem('kec_user');
+              // Redirect to authentication page
+              window.location.href = './';
+            }}
+            className="inline-block bg-gradient-to-r from-red-500 to-red-700 text-white px-6 py-3 rounded-xl shadow-lg hover:from-red-600 hover:to-red-800 transition-all duration-300"
+          >
+            ← Back to Authentication
+          </button>
         </div>
 
         {/* Experiment Buttons */}

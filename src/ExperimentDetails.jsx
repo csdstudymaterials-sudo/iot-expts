@@ -32,7 +32,13 @@ const ExperimentDetails = () => {
         <div className="text-center p-8 bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20">
           <h2 className="text-2xl font-bold text-red-600 mb-4">Experiment not found</h2>
           <button
-            onClick={() => window.location.href = './'}
+            onClick={() => {
+              // Clear authentication state
+              localStorage.removeItem('kec_authenticated');
+              localStorage.removeItem('kec_user');
+              // Redirect to authentication page
+              window.location.href = './';
+            }}
             className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl"
           >
             Back to Authentication
@@ -150,7 +156,13 @@ const ExperimentDetails = () => {
               Download Experiment (.txt)
             </button>
             <button
-              onClick={() => window.location.href = './'}
+              onClick={() => {
+                // Clear authentication state
+                localStorage.removeItem('kec_authenticated');
+                localStorage.removeItem('kec_user');
+                // Redirect to authentication page
+                window.location.href = './';
+              }}
               className="inline-block bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-4 rounded-2xl shadow-lg"
             >
               Back to Authentication
