@@ -1,17 +1,380 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>Kongu IoT Laboratory Experiments</title>
-    <script type="module" crossorigin src="./assets/app-BKQckZ1s.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/app-OVuMG84R.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<!DOCTYPE html>
+<html>
+
+ <head>
+
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <title>
+ KEC Internet Authentication
+ </title>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+ <style type="text/css">
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+ body {
+ background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+ min-height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 20px;
+ }
+ .container {
+ background: white;
+ border-radius: 12px;
+ width: 420px;
+ padding: 30px;
+ position: relative;
+ overflow: visible;
+ border: 2px solid #007bff;
+ box-shadow:
+ 0 0 0 2px rgba(0, 123, 255, 0.1),
+ 0 4px 6px -1px rgba(0, 123, 255, 0.1),
+ 0 2px 4px -1px rgba(0, 123, 255, 0.06),
+ inset 0 2px 4px rgba(0, 123, 255, 0.1);
+ background: linear-gradient(145deg, #ffffff, #f8fafc);
+ }
+ .container::before {
+ content: '';
+ position: absolute;
+ top: -2px;
+ left: -2px;
+ right: -2px;
+ bottom: -2px;
+ background: linear-gradient(145deg, #007bff, #00c6ff);
+ border-radius: 14px;
+ z-index: -1;
+ opacity: 0.7;
+ filter: blur(8px);
+ }
+ .container::after {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 4px;
+ background: linear-gradient(90deg, #007bff, #00c6ff);
+ border-radius: 12px 12px 0 0;
+ z-index: 1;
+ }
+ .logo {
+ text-align: center;
+ margin-bottom: 25px;
+ transform: translateY(0);
+ transition: transform 0.3s ease;
+ }
+ .logo:hover {
+ transform: translateY(-2px);
+ }
+ .logo img {
+ max-width: 180px;
+ height: auto;
+ filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+ }
+ h1 {
+ color: #2c3e50;
+ font-size: 24px;
+ text-align: center;
+ margin-bottom: 25px;
+ font-weight: 600;
+ letter-spacing: -0.5px;
+ }
+ .form-group {
+ margin-bottom: 20px;
+ position: relative;
+ }
+ label {
+ display: block;
+ margin-bottom: 8px;
+ color: #4a5568;
+ font-size: 14px;
+ font-weight: 500;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ }
+ label i {
+ color: #007bff;
+ }
+ .input-wrapper {
+ position: relative;
+ }
+ .input-wrapper i {
+ position: absolute;
+ left: 12px;
+ top: 50%;
+ transform: translateY(-50%);
+ color: #a0aec0;
+ transition: color 0.3s ease;
+ }
+ input[type="text"],
+ input[type="password"] {
+ width: 100%;
+ padding: 12px 16px 12px 40px;
+ border: 2px solid #e2e8f0;
+ border-radius: 8px;
+ font-size: 14px;
+ transition: all 0.3s ease;
+ background-color: #f8fafc;
+ }
+ input[type="text"]:focus,
+ input[type="password"]:focus {
+ border-color: #007bff;
+ outline: none;
+ background-color: #fff;
+ box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+ }
+ input[type="text"]:focus + i,
+ input[type="password"]:focus + i {
+ color: #007bff;
+ }
+ .submit-btn {
+ width: 100%;
+ padding: 14px;
+ background: linear-gradient(90deg, #007bff, #00c6ff);
+ color: white;
+ border: none;
+ border-radius: 8px;
+ font-size: 16px;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ margin-top: 10px;
+ text-transform: uppercase;
+ letter-spacing: 0.5px;
+ position: relative;
+ overflow: hidden;
+ }
+ .submit-btn::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: -100%;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(
+ 90deg,
+ transparent,
+ rgba(255, 255, 255, 0.2),
+ transparent
+ );
+ transition: 0.5s;
+ }
+ .submit-btn:hover::before {
+ left: 100%;
+ }
+ .submit-btn:hover {
+ transform: translateY(-1px);
+ box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+ }
+ .submit-btn:active {
+ transform: translateY(0);
+ }
+ .links {
+ margin-top: 25px;
+ text-align: center;
+ display: grid;
+ gap: 12px;
+ }
+ .links a {
+ color: #007bff;
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: 500;
+ transition: all 0.3s ease;
+ padding: 10px;
+ border-radius: 6px;
+ background-color: #f8fafc;
+ border: 1px solid #e2e8f0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ }
+ .links a:hover {
+ color: #0056b3;
+ background-color: #e6f0ff;
+ border-color: #007bff;
+ transform: translateY(-1px);
+ box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+ }
+ .links a i {
+ font-size: 16px;
+ }
+ .warning {
+ background-color: #fff8e6;
+ color: #856404;
+ padding: 12px 16px;
+ border-radius: 8px;
+ margin-top: 20px;
+ font-size: 13px;
+ border-left: 4px solid #ffc107;
+ line-height: 1.5;
+ }
+ .support-info {
+ margin-top: 20px;
+ font-size: 13px;
+ color: #4a5568;
+ text-align: center;
+ line-height: 1.6;
+ }
+ .support-info a {
+ color: #007bff;
+ text-decoration: none;
+ font-weight: 500;
+ transition: color 0.3s ease;
+ }
+ .support-info a:hover {
+ color: #0056b3;
+ text-decoration: underline;
+ }
+ .support-info p {
+ margin-bottom: 12px;
+ }
+ .support-info p:last-child {
+ color: #dc3545;
+ background-color: #fff5f5;
+ padding: 12px;
+ border-radius: 8px;
+ margin-top: 15px;
+ }
+ @media (max-width: 480px) {
+ .container {
+ width: 100%;
+ padding: 20px;
+
+
+ }
+ }
+ </style>
+
+ </head>
+
+ <body>
+
+ <div class="container">
+
+ <div class="logo">
+ <img src="./vite.svg" alt="KEC Logo">
+ </div>
+
+ <h1>
+ Internet Authentication Required
+ </h1>
+
+ <form action="./experiments.html" method="post" onsubmit="handleLogin(event)">
+
+ <input type="hidden" name="4Tredir" value="https://firewall.kongu.edu:1000/login?0104be8c2f4ae395">
+
+ <input type="hidden" name="magic" value="0509d3d6a916a0dc">
+
+ <div class="form-group">
+ <label>
+ <i class="fas fa-user">
+ </i>
+ Username (Net ID)
+ </label>
+ <div class="input-wrapper">
+ <input type="text" name="username" id="ft_un" required placeholder="Enter your Net ID">
+ <i class="fas fa-user">
+ </i>
+ </div>
+ </div>
+
+ <div class="form-group">
+ <label>
+ <i class="fas fa-lock">
+ </i>
+ Net ID Password
+ </label>
+ <div class="input-wrapper">
+ <input type="password" name="password" id="ft_pd" required placeholder="Enter your password">
+ <i class="fas fa-lock">
+ </i>
+ </div>
+ </div>
+
+ <button type="submit" class="submit-btn">
+ Continue to IoT Experiments
+ </button>
+
+ <div class="links">
+ <a href="https://password.kongu.edu/pwm/private/ChangePassword">
+ <i class="fas fa-key">
+ </i>
+ Change Password
+ </a>
+ <a href="https://password.kongu.edu/pwm/private/SetupResponses">
+ <i class="fas fa-shield-alt">
+ </i>
+ Setup Security Questions
+ </a>
+ <a href="https://password.kongu.edu/pwm/public/ForgottenPassword">
+ <i class="fas fa-question-circle">
+ </i>
+ Forgot Password?
+ </a>
+ </div>
+
+ <div class="warning">
+ Don't run Any WIFI HOTSPOT Clients or Servers on this network
+ </div>
+
+ <div class="support-info">
+ <p>
+ If you have forgotten the authentication password, you can send an email request to
+ <a href="mailto:support@kongu.edu">
+ support@kongu.edu
+ </a>
+ to reset the password only from your own kongu.edu email ID.
+ </p>
+ <p>
+ Password Queries & WiFi Registration @ ITPark Dinning Hall 04:00 PM onwards. If you have any difficulties logging in to this resource, please contact the Server Room.
+ </p>
+ </div>
+ </form>
+
+ <script>
+ function handleLogin(event) {
+   event.preventDefault();
+
+   const username = document.getElementById('ft_un').value;
+   const password = document.getElementById('ft_pd').value;
+
+   // Simple validation - you can add more complex authentication logic here
+   if (username && password) {
+     // Store authentication status (you can use localStorage or sessionStorage)
+     localStorage.setItem('kec_authenticated', 'true');
+     localStorage.setItem('kec_user', username);
+
+     // Redirect to experiments page
+     window.location.href = './experiments.html';
+   } else {
+     alert('Please enter both username and password');
+   }
+ }
+
+ // Check if already authenticated
+ window.onload = function() {
+   const isAuthenticated = localStorage.getItem('kec_authenticated');
+   if (isAuthenticated === 'true') {
+     // If already authenticated, redirect to experiments
+     window.location.href = './experiments.html';
+   }
+ }
+ </script>
+
+ </div>
+
+ </body>
+
 </html>
