@@ -8,51 +8,22 @@ import ExperimentDetails from './ExperimentDetails';
 
 // Authentication guard component
 const ProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     // Check if user is authenticated
     const authStatus = localStorage.getItem('kec_authenticated');
-    setIsAuthenticated(authStatus === 'true');
+    const authenticated = authStatus === 'true';
+    setIsAuthenticated(authenticated);
+
+    // Redirect to login if not authenticated
+    if (!authenticated) {
+      window.location.href = './';
+    }
   }, []);
 
-  // Show loading while checking authentication
-  if (isAuthenticated === null) {
-    return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white',
-        fontFamily: 'Arial, sans-serif'
-      }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{
-            width: '40px',
-            height: '40px',
-            border: '4px solid rgba(255,255,255,0.3)',
-            borderTop: '4px solid white',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            margin: '0 auto 20px'
-          }}></div>
-          <p>Verifying authentication...</p>
-        </div>
-        <style>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
-      </div>
-    );
-  }
-
-  // Redirect to login if not authenticated
+  // Don't render anything while redirecting or if not authenticated
   if (!isAuthenticated) {
-    window.location.href = './';
     return null;
   }
 
