@@ -78,63 +78,7 @@ const ExperimentList = () => {
           ))}
         </div>
 
-        {/* Full details for experiments 2-6 (rendered near the first experiment) */}
-        <div className="space-y-8 mb-12">
-          {experiments.filter(e => e.id >= 2 && e.id <= 6).map(e => (
-            <div key={`detail-${e.id}`} className="bg-white/90 p-6 rounded-2xl shadow-lg border border-white/20">
-              <h3 className="text-2xl font-bold text-blue-700 mb-2">Experiment {e.id}: {e.name}</h3>
-              <p className="mb-3 text-gray-700"><strong>Aim:</strong> {e.aim}</p>
-              <div className="mb-3">
-                <h4 className="font-semibold">Components:</h4>
-                <ul className="list-disc list-inside ml-4">
-                  {e.components.map((c, i) => <li key={i} className="text-gray-700">{c}</li>)}
-                </ul>
-              </div>
-
-              {e.procedure && e.procedure.length > 0 && (
-                <div className="mb-3">
-                  <h4 className="font-semibold">Procedure:</h4>
-                  <ol className="list-decimal list-inside ml-4">
-                    {e.procedure.map((step, i) => <li key={i} className="text-gray-700 mb-1">{step}</li>)}
-                  </ol>
-                </div>
-              )}
-
-              {e.program && e.program.length > 0 && (
-                <div className="mb-3">
-                  <h4 className="font-semibold">Program(s):</h4>
-                  {e.program.map((p, idx) => (
-                    <div key={idx} className="mb-4">
-                      <h5 className="font-medium text-blue-600">{p.title}</h5>
-                      <pre className="bg-gray-100 p-3 rounded text-sm overflow-x-auto"><code>{p.code}</code></pre>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {e.images && e.images.length > 0 && (
-                <div className="mb-3">
-                  <h4 className="font-semibold">Reference Images:</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                    {e.images.map((img, i) => (
-                      <div key={i} className="p-2 bg-white rounded-lg border">
-                        <img src={`/docs/assets/${img}`} alt={img} className="w-full h-auto rounded" onError={(ev)=>{ev.currentTarget.style.display='none'}} />
-                        <p className="text-sm text-gray-600 mt-1 text-center">{img}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {e.output && (
-                <div className="mt-3">
-                  <h4 className="font-semibold">Expected Output:</h4>
-                  <p className="text-gray-700">{e.output}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        {/* Full details removed from home page per request */}
 
         {/* Footer */}
         <div className="text-center p-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl shadow-2xl text-white">
