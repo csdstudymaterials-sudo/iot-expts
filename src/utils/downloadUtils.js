@@ -100,3 +100,62 @@ export const downloadCode = (code, title) => {
   document.body.removeChild(a);
   window.URL.revokeObjectURL(url);
 };
+
+// Function to download a range of experiments as a single text file
+export const downloadExperimentsRange = (experimentsArray, startId, endId) => {
+  const selected = experimentsArray.filter(e => e.id >= startId && e.id <= endId);
+  if (!selected || selected.length === 0) return;
+
+  let content = '';
+  content += 'KONGU ENGINEERING COLLEGE\n';
+  content += 'DEPARTMENT OF COMPUTER SCIENCE AND DESIGN\n';
+  content += `IoT LABORATORY EXPERIMENTS ${startId} to ${endId}\n\n`;
+
+  selected.forEach((experiment) => {
+    content += `EXPERIMENT ${experiment.id}: ${experiment.name}\n\n`;
+    content += `AIM:\n${experiment.aim}\n\n`;
+
+    content += `COMPONENTS USED:\n`;
+    experiment.components.forEach((component, index) => {
+      content += `${index + 1}. ${component}\n`;
+    });
+    content += '\n';
+
+    if (experiment.procedure && experiment.procedure.length > 0) {
+      content += `PROCEDURE:\n`;
+      experiment.procedure.forEach((step, index) => {
+        content += `${index + 1}. ${step}\n`;
+      });
+      content += '\n';
+    }
+
+    if (experiment.program && experiment.program.length > 0) {
+      content += `PROGRAMS:\n`;
+      experiment.program.forEach((prog, index) => {
+        content += `${index + 1}. ${prog.title}\n`;
+        content += `${'='.repeat(prog.title.length + 3)}\n`;
+        content += `${prog.code}\n\n`;
+      });
+    }
+
+    if (experiment.output) {
+      content += `OUTPUT:\n${experiment.output}\n\n`;
+    }
+
+    content += '----------------------------------------\n\n';
+  });
+
+  content += 'Developed by 2023-27 batch\n';
+  content += 'Kongu Engineering College IoT Laboratory\n';
+
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const filename = `Experiments_${startId}_to_${endId}.txt`;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.URL.revokeObjectURL(url);
+};

@@ -4,7 +4,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import experiments from './data';
-import { downloadExperiment } from './utils/downloadUtils';
+import { downloadExperiment, downloadExperimentsRange } from './utils/downloadUtils';
 import kecbanner from './assets/kecbanner.png';
 
 const ExperimentList = () => {
@@ -25,6 +25,14 @@ const ExperimentList = () => {
         {/* Section Header */}
         <div className="text-center p-6 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-white/30 mb-8">
           <h3 className="text-2xl md:text-3xl font-bold text-blue-700 mb-4">IoT Laboratory Experiments</h3>
+          <div className="mb-4">
+            <button
+              onClick={() => downloadExperimentsRange(experiments, 2, 8)}
+              className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md mr-4"
+            >
+              Download Experiments 2–8 (.txt)
+            </button>
+          </div>
           <button
             onClick={() => {
               // Clear authentication state
