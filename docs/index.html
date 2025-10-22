@@ -1,154 +1,79 @@
-<!DOCTYPE html><!DOCTYPE html>
-
-<html lang="en"><html lang="en">
-
-<head><head>
-
-    <meta charset="UTF-8">    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>KEC Internet Authentication</title>    <title>KEC Internet Authentication</title>
-
-    <style>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-        body {    <style>
-
-            font-family: Arial, sans-serif;        * {
-
-            background-color: #f0f0f0;            margin: 0;
-
-            display: flex;            padding: 0;
-
-            justify-content: center;            box-sizing: border-box;
-
-            align-items: center;        }
-
-            height: 100vh;        body {
-
-            margin: 0;            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-        }            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-
-        .auth-container {            min-height: 100vh;
-
-            background-color: white;            display: flex;
-
-            padding: 20px;            align-items: center;
-
-            border-radius: 8px;            justify-content: center;
-
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);            padding: 20px;
-
-            text-align: center;        }
-
-        }        .container {
-
-        .logo {            background: white;
-
-            max-width: 200px;            border-radius: 12px;
-
-            margin-bottom: 20px;            width: 420px;
-
-        }            padding: 30px;
-
-        input {            position: relative;
-
-            width: 100%;            overflow: visible;
-
-            padding: 10px;            border: 2px solid #007bff;
-
-            margin: 10px 0;            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1), 0 4px 6px -1px rgba(0, 123, 255, 0.1), 0 2px 4px -1px rgba(0, 123, 255, 0.06), inset 0 2px 4px rgba(0, 123, 255, 0.1);
-
-            border: 1px solid #ccc;            background: linear-gradient(145deg, #ffffff, #f8fafc);
-
-            border-radius: 4px;        }
-
-        }        .container::before {
-
-        button {            content: '';
-
-            background-color: #007bff;            position: absolute;
-
-            color: white;            top: -2px;
-
-            padding: 10px 20px;            left: -2px;
-
-            border: none;            right: -2px;
-
-            border-radius: 4px;            bottom: -2px;
-
-            cursor: pointer;            background: linear-gradient(145deg, #007bff, #00c6ff);
-
-        }            border-radius: 14px;
-
-        button:hover {            z-index: -1;
-
-            background-color: #0056b3;            opacity: 0.7;
-
-        }            filter: blur(8px);
-
-    </style>        }
-
-</head>        .container::after {
-
-<body>            content: '';
-
-    <div class="auth-container">            position: absolute;
-
-        <img src="assets/Kongu logo assuring best.gif" alt="Kongu Logo" class="logo">            top: 0;
-
-        <h2>KEC Internet Authentication</h2>            left: 0;
-
-        <form id="authForm">            right: 0;
-
-            <input type="text" id="username" placeholder="Username" required>            height: 4px;
-
-            <input type="password" id="password" placeholder="Password" required>            background: linear-gradient(90deg, #007bff, #00c6ff);
-
-            <button type="submit">Login</button>            border-radius: 12px 12px 0 0;
-
-        </form>            z-index: 1;
-
-    </div>        }
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEC Internet Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            width: 420px;
+            padding: 30px;
+            position: relative;
+            overflow: visible;
+            border: 2px solid #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1), 0 4px 6px -1px rgba(0, 123, 255, 0.1), 0 2px 4px -1px rgba(0, 123, 255, 0.06), inset 0 2px 4px rgba(0, 123, 255, 0.1);
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(145deg, #007bff, #00c6ff);
+            border-radius: 14px;
+            z-index: -1;
+            opacity: 0.7;
+            filter: blur(8px);
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #007bff, #00c6ff);
+            border-radius: 12px 12px 0 0;
+            z-index: 1;
+        }
         .logo {
-
-    <script>            text-align: center;
-
-        document.getElementById('authForm').addEventListener('submit', function(e) {            margin-bottom: 25px;
-
-            e.preventDefault();            transform: translateY(0);
-
-            const username = document.getElementById('username').value;            transition: transform 0.3s ease;
-
-            const password = document.getElementById('password').value;        }
-
-                    .logo:hover {
-
-            // Simple auth check (in real app, this would be server-side)            transform: translateY(-2px);
-
-            if (username && password) {        }
-
-                localStorage.setItem('kec_authenticated', 'true');        .logo img {
-
-                localStorage.setItem('kec_user', username);            max-width: 180px;
-
-                window.location.href = 'experiments.html';            height: auto;
-
-            } else {            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-
-                alert('Please enter valid credentials');        }
-
-            }        h1 {
-
-        });            color: #2c3e50;
-
-    </script>            font-size: 24px;
-
-</body>            text-align: center;
-
-</html>            margin-bottom: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        .logo img {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 25px;
             font-weight: 600;
             letter-spacing: -0.5px;
         }
