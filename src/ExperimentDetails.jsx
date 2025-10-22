@@ -172,7 +172,12 @@ const ExperimentDetails = () => {
 
         {/* Footer */}
         <div className="text-center p-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl shadow-2xl text-white">
-          <p className="text-lg">Developed by 2023-27 batch </p>
+          <p className="text-lg">Developed by Roohith Bala (23CDR138)</p>
+          <p className="text-sm mt-2">
+            <a href="https://github.com/roohithbala" target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 underline">
+              GitHub: @roohithbala
+            </a>
+          </p>
         </div>
       </div>
     </div>
