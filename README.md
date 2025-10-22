@@ -1,4 +1,4 @@
-# Kongu IoT Laboratory Web App
+remo# Kongu IoT Laboratory Web App
 
 ![Kongu Engineering College](src/assets/kecbanner.png)
 
@@ -225,7 +225,16 @@ This project is developed for educational purposes by the 2023-27 batch of Kongu
 - **2023-27 Batch** - For development and implementation
 - **Open Source Community** - For the amazing tools and libraries
 
-## 📞 Contact
+## �‍💻 Developer & Sponsor
+
+**Roohith Bala**
+- **Role**: Lead Developer & Project Sponsor
+- **Batch**: 2023-27
+- **Department**: Computer Science and Design
+- **Institution**: Kongu Engineering College
+- **GitHub**: [@roohithbala](https://github.com/roohithbala)
+
+## �📞 Contact
 
 **Kongu Engineering College**
 - Department: Computer Science and Design
