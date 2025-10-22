@@ -216,31 +216,23 @@ npm install
 
 ## 📄 License
 
-This project is developed for educational purposes by the 2023-27 batch of Kongu Engineering College.
+This project is developed for educational purposes.
 
 ## 🙏 Acknowledgments
 
 - **Kongu Engineering College** - For providing the platform and resources
-- **Department of Computer Science and Design** - For guidance and support
-- **2023-27 Batch** - For development and implementation
 - **Open Source Community** - For the amazing tools and libraries
 
-## �‍💻 Developer & Sponsor
+## 👨‍💻 Developer & Sponsor
 
-**Roohith Bala**
+**23CDR138 Roohith Bala G**
 - **Role**: Lead Developer & Project Sponsor
-- **Batch**: 2023-27
-- **Department**: Computer Science and Design
-- **Institution**: Kongu Engineering College
 - **GitHub**: [@roohithbala](https://github.com/roohithbala)
 
-## �📞 Contact
+##  Contact
 
 **Kongu Engineering College**
-- Department: Computer Science and Design
 - Location: Perundurai, Tamil Nadu, India
-
-**Developers**: 2023-27 Batch Students
 
 ---
 
