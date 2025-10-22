@@ -203,7 +203,7 @@ void loop() {
       },
       {
         title: "6-Signal Traffic Light Control Program",
-        code: "#define redPin1 2
+        code: `#define redPin1 2
 #define yellowPin1 4
 #define greenPin1 5
 #define redPin2 12
