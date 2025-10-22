@@ -205,7 +205,12 @@ def led_on():
 @app.route('/0')
 def led_off():
     rpi.output(18, rpi.LOW)
-    return render_template("webpage.html")`},{title:`webpage.html Template`,code:`<!DOCTYPE html>
+    return render_template("webpage.html")
+    
+
+if __name__=="__main__":
+  print("Start")
+  app.run(debug=True, host='0.0.0.0')`},{title:`webpage.html Template`,code:`<!DOCTYPE html>
 <html>
 <head>
     <title>Raspberry Pi LED Control</title>
