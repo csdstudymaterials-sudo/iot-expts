@@ -8,10 +8,23 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Kongu IoT Laboratory Experiments</title>
+    <script>
+      // Early guard: if not authenticated, redirect back to the auth landing page.
+      try {
+        if (localStorage.getItem('kec_authenticated') !== 'true') {
+          // use replace to avoid creating an extra history entry
+          window.location.replace('./');
+        }
+      } catch (e) {
+        // If access to localStorage is blocked for any reason, still redirect
+        try { window.location.replace('./'); } catch (_) {}
+      }
+    </script>
     <script type="module" crossorigin src="./assets/app-e6pIXu23.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/app-BeqfkqBE.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
+
   </body>
 </html>
