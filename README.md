@@ -108,7 +108,7 @@ A comprehensive, modern web application showcasing IoT laboratory experiments fo
 
 ## 🌐 Live Demo
 
-The application is live at: [https://roohithbala.github.io/iot-expts/](https://roohithbala.github.io/iot-expts/)
+The application is live at: [https://csdstudymaterials-sudo.github.io/iot-expts/](https://csdstudymaterials-sudo.github.io/iot-expts/)
 
 ## 📁 Project Structure
 
