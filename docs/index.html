@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./docs/vite.svg" />
+    <title>Redirecting to Kongu IoT Lab...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        // Redirect to docs folder but keep clean URL
+        var path = window.location.pathname;
+        var repoName = '/iot-expts';
+        
+        // If we're at the root, redirect to docs
+        if (path === repoName + '/' || path === repoName + '/index.html' || path === repoName) {
+            window.location.replace(repoName + '/docs/');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Redirecting to Kongu IoT Laboratory</h1>
+        <div class="spinner"></div>
+        <p>If you're not redirected, <a href="./docs/" style="color: #fff; text-decoration: underline;">click here</a></p>
+    </div>
+</body>
+</html>
