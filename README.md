@@ -82,7 +82,7 @@ A comprehensive, modern web application showcasing IoT laboratory experiments fo
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/roohithbala/iot-expts.git
+   git clone https://github.com/csdstudymaterials-sudo/iot-expts.git
    cd kongu-iot-web
    ```
 
