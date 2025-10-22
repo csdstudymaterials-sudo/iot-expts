@@ -1,34 +1,19 @@
-<!DOCTYPE html><!doctype html>
-
-<html lang="en"><html>
-
-<head>  <head>
-
-    <meta charset="UTF-8">    <meta charset="utf-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta http-equiv="refresh" content="0; url=./app.html" />
-
-    <title>Redirecting...</title>    <meta name="robots" content="noindex">
-
-    <script>    <title>Redirecting to Kongu IoT App</title>
-
-        // Check authentication    <style>body{font-family:system-ui,Segoe UI,Arial;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f1f5f9}a{color:#2563eb}</style>
-
-        if (localStorage.getItem('kec_authenticated') === 'true') {  </head>
-
-            window.location.href = 'app.html';  <body>
-
-        } else {    <div>
-
-            window.location.href = 'index.html';      <h1>Redirecting to IoT Experiments...</h1>
-
-        }      <p>If you are not redirected, <a href="./app.html">click here</a>.</p>
-
-    </script>    </div>
-
-</head>  </body>
-
-<body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Check authentication
+        if (localStorage.getItem('kec_authenticated') === 'true') {
+            window.location.href = 'app.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body>
     <p>Redirecting...</p>
 </body>
 </html>
