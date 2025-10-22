@@ -123,6 +123,135 @@ void loop() {
   digitalWrite(yellowPin, HIGH);
   digitalWrite(greenPin, LOW);
   delay(1000);
+}`},{title:`6-Signal Traffic Light Control Program`,code:`#define redPin1 2
+#define yellowPin1 4
+#define greenPin1 5
+#define redPin2 12
+#define yellowPin2 13
+#define greenPin2 14
+#define redPin3 15
+#define yellowPin3 16
+#define greenPin3 17
+#define redPin4 18
+#define yellowPin4 19
+#define greenPin4 21
+#define redPin5 22
+#define yellowPin5 23
+#define greenPin5 25
+#define redPin6 26
+#define yellowPin6 27
+#define greenPin6 32
+
+void setup() {
+  pinMode(redPin1, OUTPUT);
+  pinMode(yellowPin1, OUTPUT);
+  pinMode(greenPin1, OUTPUT);
+  pinMode(redPin2, OUTPUT);
+  pinMode(yellowPin2, OUTPUT);
+  pinMode(greenPin2, OUTPUT);
+  pinMode(redPin3, OUTPUT);
+  pinMode(yellowPin3, OUTPUT);
+  pinMode(greenPin3, OUTPUT);
+  pinMode(redPin4, OUTPUT);
+  pinMode(yellowPin4, OUTPUT);
+  pinMode(greenPin4, OUTPUT);
+  pinMode(redPin5, OUTPUT);
+  pinMode(yellowPin5, OUTPUT);
+  pinMode(greenPin5, OUTPUT);
+  pinMode(redPin6, OUTPUT);
+  pinMode(yellowPin6, OUTPUT);
+  pinMode(greenPin6, OUTPUT);
+}
+
+void loop() {
+  // Road 1 Green, Others Red
+  digitalWrite(greenPin1, HIGH);
+  digitalWrite(redPin2, HIGH);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 1 Yellow
+  digitalWrite(greenPin1, LOW);
+  digitalWrite(yellowPin1, HIGH);
+  delay(2000);
+
+  // Road 2 Green, Others Red
+  digitalWrite(yellowPin1, LOW);
+  digitalWrite(redPin1, HIGH);
+  digitalWrite(greenPin2, HIGH);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 2 Yellow
+  digitalWrite(greenPin2, LOW);
+  digitalWrite(yellowPin2, HIGH);
+  delay(2000);
+
+  // Road 3 Green, Others Red
+  digitalWrite(yellowPin2, LOW);
+  digitalWrite(redPin2, HIGH);
+  digitalWrite(greenPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 3 Yellow
+  digitalWrite(greenPin3, LOW);
+  digitalWrite(yellowPin3, HIGH);
+  delay(2000);
+
+  // Road 4 Green, Others Red
+  digitalWrite(yellowPin3, LOW);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(greenPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 4 Yellow
+  digitalWrite(greenPin4, LOW);
+  digitalWrite(yellowPin4, HIGH);
+  delay(2000);
+
+  // Road 5 Green, Others Red
+  digitalWrite(yellowPin4, LOW);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(greenPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 5 Yellow
+  digitalWrite(greenPin5, LOW);
+  digitalWrite(yellowPin5, HIGH);
+  delay(2000);
+
+  // Road 6 Green, Others Red
+  digitalWrite(yellowPin5, LOW);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(greenPin6, HIGH);
+  delay(5000);
+
+  // Road 6 Yellow
+  digitalWrite(greenPin6, LOW);
+  digitalWrite(yellowPin6, HIGH);
+  delay(2000);
+
+  // All Red for a moment
+  digitalWrite(yellowPin6, LOW);
+  digitalWrite(redPin1, HIGH);
+  digitalWrite(redPin2, HIGH);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(1000);
 }`}],images:[`esp32 pin config.jpg`],output:`Thus, the traffic signal controller was successfully implemented and verified using the ESP32 development board.`},{id:3,name:`Experiment 3: IoT Cloud Data Logging using ThingSpeak and ESP32`,aim:`To interface the ESP32 with the ThingSpeak cloud platform and upload real-time sensor data using Wi-Fi connectivity.`,components:[`ESP32 Development Board (1)`,`Breadboard (1)`,`Jumper Wires (5)`,`Potentiometer / LDR Sensor (1)`,`Computer with Arduino IDE Installed (1)`,`Micro USB Cable (1)`],procedure:[`Circuit Connection:`,`Connect the ESP32 board to your computer using a Micro USB cable.`,`Connect the sensor (e.g., LDR or potentiometer) to the analog pin A0 (GPIO 34) of the ESP32.`,`Connect 3.3V and GND pins of the ESP32 to power the sensor through the breadboard.`,`ThingSpeak Setup:`,`Create an account on ThingSpeak.`,`Create a new channel and enable Field 1 for data entry.`,`Copy the Write API Key from the API Keys tab of the channel.`,`Arduino IDE Setup:`,`Open Arduino IDE and select ESP32 Dev Module from Tools → Board.`,`Connect your ESP32 and select the correct COM port.`,`Install the required libraries: WiFi.h (comes by default with ESP32) and ThingSpeak.h`,`Upload the Code:`,`Paste the below program.`,`Replace the WiFi SSID, password, and ThingSpeak API key with your own details.`,`Upload the program to the ESP32.`,`Open the Serial Monitor (9600 baud) to verify WiFi connection and data updates.`],program:[{title:`ThingSpeak Data Logging Program`,code:`#include <WiFi.h>
 #include <ThingSpeak.h>
 

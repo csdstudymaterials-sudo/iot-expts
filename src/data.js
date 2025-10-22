@@ -200,6 +200,139 @@ void loop() {
   digitalWrite(greenPin, LOW);
   delay(1000);
 }`
+      },
+      {
+        title: "6-Signal Traffic Light Control Program",
+        code: `#define redPin1 2
+#define yellowPin1 4
+#define greenPin1 5
+#define redPin2 12
+#define yellowPin2 13
+#define greenPin2 14
+#define redPin3 15
+#define yellowPin3 16
+#define greenPin3 17
+#define redPin4 18
+#define yellowPin4 19
+#define greenPin4 21
+#define redPin5 22
+#define yellowPin5 23
+#define greenPin5 25
+#define redPin6 26
+#define yellowPin6 27
+#define greenPin6 32
+
+void setup() {
+  pinMode(redPin1, OUTPUT);
+  pinMode(yellowPin1, OUTPUT);
+  pinMode(greenPin1, OUTPUT);
+  pinMode(redPin2, OUTPUT);
+  pinMode(yellowPin2, OUTPUT);
+  pinMode(greenPin2, OUTPUT);
+  pinMode(redPin3, OUTPUT);
+  pinMode(yellowPin3, OUTPUT);
+  pinMode(greenPin3, OUTPUT);
+  pinMode(redPin4, OUTPUT);
+  pinMode(yellowPin4, OUTPUT);
+  pinMode(greenPin4, OUTPUT);
+  pinMode(redPin5, OUTPUT);
+  pinMode(yellowPin5, OUTPUT);
+  pinMode(greenPin5, OUTPUT);
+  pinMode(redPin6, OUTPUT);
+  pinMode(yellowPin6, OUTPUT);
+  pinMode(greenPin6, OUTPUT);
+}
+
+void loop() {
+  // Road 1 Green, Others Red
+  digitalWrite(greenPin1, HIGH);
+  digitalWrite(redPin2, HIGH);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 1 Yellow
+  digitalWrite(greenPin1, LOW);
+  digitalWrite(yellowPin1, HIGH);
+  delay(2000);
+
+  // Road 2 Green, Others Red
+  digitalWrite(yellowPin1, LOW);
+  digitalWrite(redPin1, HIGH);
+  digitalWrite(greenPin2, HIGH);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 2 Yellow
+  digitalWrite(greenPin2, LOW);
+  digitalWrite(yellowPin2, HIGH);
+  delay(2000);
+
+  // Road 3 Green, Others Red
+  digitalWrite(yellowPin2, LOW);
+  digitalWrite(redPin2, HIGH);
+  digitalWrite(greenPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 3 Yellow
+  digitalWrite(greenPin3, LOW);
+  digitalWrite(yellowPin3, HIGH);
+  delay(2000);
+
+  // Road 4 Green, Others Red
+  digitalWrite(yellowPin3, LOW);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(greenPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 4 Yellow
+  digitalWrite(greenPin4, LOW);
+  digitalWrite(yellowPin4, HIGH);
+  delay(2000);
+
+  // Road 5 Green, Others Red
+  digitalWrite(yellowPin4, LOW);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(greenPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(5000);
+
+  // Road 5 Yellow
+  digitalWrite(greenPin5, LOW);
+  digitalWrite(yellowPin5, HIGH);
+  delay(2000);
+
+  // Road 6 Green, Others Red
+  digitalWrite(yellowPin5, LOW);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(greenPin6, HIGH);
+  delay(5000);
+
+  // Road 6 Yellow
+  digitalWrite(greenPin6, LOW);
+  digitalWrite(yellowPin6, HIGH);
+  delay(2000);
+
+  // All Red for a moment
+  digitalWrite(yellowPin6, LOW);
+  digitalWrite(redPin1, HIGH);
+  digitalWrite(redPin2, HIGH);
+  digitalWrite(redPin3, HIGH);
+  digitalWrite(redPin4, HIGH);
+  digitalWrite(redPin5, HIGH);
+  digitalWrite(redPin6, HIGH);
+  delay(1000);
+}`
       }
     ],
     images: ["esp32 pin config.jpg"],
